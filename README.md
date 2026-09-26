@@ -2,14 +2,18 @@
 
 A **Retrieval-Augmented Generation (RAG)** application that allows users to ask questions about the content of a YouTube video.
 
-The application retrieves the video's transcript, splits it into smaller chunks, converts the chunks into vector embeddings, stores them in a FAISS vector database, and retrieves the most relevant chunks to provide context to a Gemini LLM for generating answers.
+The application extracts the video's transcript, splits it into smaller chunks, generates vector embeddings, stores them in a FAISS vector database, retrieves the most relevant transcript chunks, and uses Google Gemini to generate an answer.
+
+The application also includes a Streamlit web interface where users can enter a YouTube URL and interactively ask questions about the video.
 
 ## How It Works
 
 ```text
-YouTube Video
+YouTube Video URL
       ↓
-YouTube Transcript
+Extract Video ID
+      ↓
+Fetch Transcript
       ↓
 Text Splitting
       ↓
@@ -69,9 +73,11 @@ Google Gemini generates the final answer using only the retrieved transcript con
 
 If the retrieved context does not contain enough information, the prompt instructs the model to respond that it does not know.
 
+
 ## Technologies Used
 
 * Python
+* Streamlit — Web interface
 * LangChain
 * LangChain Core
 * LangChain Community
@@ -79,6 +85,7 @@ If the retrieved context does not contain enough information, the prompt instruc
 * Google Gemini
 * Google Generative AI Embeddings
 * FAISS
+* uv — Python package and environment management
 * YouTube Transcript API
 * python-dotenv
 
@@ -121,35 +128,17 @@ uv sync
 Create a `.env` file in the project root:
 
 ```env
-GOOGLE_API_KEY=your_google_api_key
+GOOGLE_API_KEY = your_google_api_key
 ```
 
-Do not commit the `.env` file to GitHub.
 
-### 4. Run the application
+### 4. Run the Streamlit application
 
 ```bash
-uv run main.py
+uv run streamlit run main.py
 ```
+The application will open in your browser at the local Streamlit address.
 
-## Example
-
-The application can be used to ask questions about the transcript of a YouTube video, for example:
-
-```text
-Question: Why was CID called?
-
-Answer: ...
-```
-
-Other questions can be asked such as:
-
-```text
-Who is the little girl?
-What happened to the victim?
-Who called CID?
-What happened at the end?
-```
 
 ## Key Concepts Demonstrated
 
@@ -166,17 +155,10 @@ This project demonstrates the core components of a RAG pipeline:
 * LLM-based generation
 * LangChain Runnable pipelines
 
-## Limitations
-
-The current implementation retrieves only the top 4 most relevant transcript chunks for a question. Therefore, it is primarily designed for **question answering over the video transcript**, rather than generating a complete summary of the entire video.
-
-The quality of the answers also depends on the availability and quality of the video's transcript.
 
 ## Future Improvements
 
 * Support more transcript languages
-* Add a user interface using Streamlit
-* Allow users to enter any YouTube URL
 * Improve retrieval using MMR or hybrid search
 * Add metadata filtering
 * Implement conversational memory
@@ -186,7 +168,6 @@ The quality of the answers also depends on the availability and quality of the v
 
 ## 👩‍💻 Author
 Arshia Sood Aspiring Data Scientist | Machine Learning Enthusiast
-
-🔗 GitHub: https://github.com/Arshia-Sood
+Contact: arshiasood109@gmail.com
 
 ⭐ If you like this project, give it a star!
