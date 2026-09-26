@@ -19,6 +19,7 @@ dependencies = [
     "langchain-text-splitters>=1.1.2",
     "openai>=3.19.2",
     "python-dotenv>=1.2.3",
+    "streamlit>=1.64.0",
     "youtube-transcript-api>=1.2.4",
 ]
 

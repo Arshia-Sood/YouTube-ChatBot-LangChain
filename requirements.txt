@@ -21,3 +21,6 @@ chromadb
 youtube-transcript-api
 
 faiss-cpu
+
+#streamlit-ui 
+streamlit
