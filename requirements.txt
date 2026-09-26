@@ -1,0 +1,23 @@
+#LangChain Core
+langchain
+langchain-community
+langchain-core
+langchain-text-splitters
+
+# Environment Variable Management
+python-dotenv
+
+#OpenAI Integration
+langchain-openai
+openai
+
+#Google Gemini (PaLM) Integration
+langchain-google-genai
+google-generativeai
+
+#vector databse
+chromadb
+
+youtube-transcript-api
+
+faiss-cpu
